@@ -16,7 +16,3 @@ Bundle the package:
 
     $ jruby -S bundler install
 
-
-## Try it out
-
-bin/logstash -e 'input { file { path => "/var/lib/dsp/importer/auctions*" codec => thrift { classname => "auction_log_entry" }} } output {stdout { codec => rubydebug }}'
