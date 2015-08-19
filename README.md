@@ -1,5 +1,22 @@
 # Logstash Codec Thrift
 
+## Install
+
+    $ ./bin/plugin install logstash-codec-thrift
+
+## Usage
+
+```ruby
+input {
+  zeromq {
+    codec => thrift {
+      classname => "example_thrift_class"
+      file => "/path/to/your/thrift/gen/ruby/example_thrift_class_types.rb"
+      protocol_factory => "JsonProtocolFactory" # optional, defalut: BinaryProtocolFactory
+    }
+  }
+}
+```
 
 ## Install dependencies
 
@@ -11,8 +28,16 @@ Install jruby bundler:
 
     $ jruby -S gem install bundler
 
-
-Bundle the package:
+Install plugin dependencies:
 
     $ jruby -S bundler install
 
+## Build & Install
+
+Build Gem:
+
+    $ gem build logstash-codec-thrift.gemspec
+
+Install Gem:
+
+    $ ./bin/plugin install /your/local/plugin/logstash-codec-thrift.gem

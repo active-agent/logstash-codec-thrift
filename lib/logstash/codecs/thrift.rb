@@ -28,12 +28,10 @@ require "logstash/codecs/thrift-event"
 # ----------------------------------
 # input {
 #   zeromq {
-#     codec => {
-#       thrift => {
-#           classname => "example_class"
-#           file => "~/example_class.rb"
-#           protocol_factory => "JsonProtocolFactory"
-#       }
+#     codec => thrift {
+#       classname => "example_class"
+#       file => "~/example_class.rb"
+#       protocol_factory => "JsonProtocolFactory"
 #     }
 #   }
 # }
@@ -71,7 +69,7 @@ class LogStash::Codecs::Thrift < LogStash::Codecs::Base
     public
     def decode(data)
         deserializer = Thrift::Deserializer.new(@protocolFactory.new)
-        yield LogStash::Event.new({ "message" => as_hash(deserializer.deserialize(@clazz.new, data)).to_json })
+        yield LogStash::Event.new(as_hash(deserializer.deserialize(@clazz.new, data)))
     end
 
     public
@@ -94,10 +92,10 @@ class LogStash::Codecs::Thrift < LogStash::Codecs::Base
             if value.is_a?(Array)
                 hash[key] = []
                 value.each do |elem|
-                    if elem.is_a?(Numeric) || elem.is_a?(String) || elem.is_a?(Boolean)
-                        hash[key].push(elem)
-                    else
+                    if elem.is_a?(Array) || elem.is_a?(Object)
                         hash[key].push(as_hash(elem))
+                    else
+                        hash[key].push(elem)
                     end
                 end
             else
