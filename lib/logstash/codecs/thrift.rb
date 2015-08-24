@@ -85,23 +85,21 @@ class LogStash::Codecs::Thrift < LogStash::Codecs::Base
 
     private
     def as_hash(obj)
-        hash = {}
-        obj.instance_variables.each { |var|
-            key = var.to_s.delete("@")
-            value = obj.instance_variable_get(var)
-            if value.is_a?(Array)
-                hash[key] = []
-                value.each do |elem|
-                    if elem.is_a?(Array) || elem.is_a?(Object)
-                        hash[key].push(as_hash(elem))
-                    else
-                        hash[key].push(elem)
-                    end
-                end
-            else
-                hash[key] = value
-            end
-        }
+        if obj.is_a?(TrueClass) | obj.is_a?(FalseClass) | obj.is_a?(String) | obj.is_a?(Numeric)
+            hash = obj
+        elsif obj.is_a?(Array)
+            hash = []
+            obj.each { |var|
+                hash.push(as_hash(var))
+            }
+        else
+            hash = {}
+            obj.instance_variables.each { |var|
+                key = var.to_s.delete("@")
+                value = obj.instance_variable_get(var)
+                hash[key] = as_hash(value)
+            }
+        end
         hash
     end
 

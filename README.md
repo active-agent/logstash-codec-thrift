@@ -1,5 +1,7 @@
 # Logstash Codec Thrift
 
+[![Gem Version](https://badge.fury.io/rb/logstash-codec-thrift.svg)](http://badge.fury.io/rb/logstash-codec-thrift)
+
 ## Install
 
     $ ./bin/plugin install logstash-codec-thrift
