@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.require_paths   = ["lib"]
 
   # Files
-  s.files = `git ls-files`.split($\)
+  s.files = Dir['lib/**/*','*.gemspec','*.md','Gemfile']
 
   # Tests
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
@@ -24,6 +24,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'thrift'
 
   s.add_development_dependency 'logstash-devutils', '>= 0.0.15'
-
 
 end
