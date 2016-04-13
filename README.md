@@ -1,6 +1,6 @@
 # Logstash Codec Thrift
 
-[![Gem Version](https://badge.fury.io/rb/logstash-codec-thrift.svg)](http://badge.fury.io/rb/logstash-codec-thrift) [![Build Status](https://travis-ci.org/oliviernt/logstash-codec-thrift.svg?branch=master)](https://travis-ci.org/oliviernt/logstash-codec-thrift)
+[![Gem Version](https://badge.fury.io/rb/logstash-codec-thrift.svg)](http://badge.fury.io/rb/logstash-codec-thrift) [![Build Status](https://travis-ci.org/active-agent/logstash-codec-thrift.svg?branch=master)](https://travis-ci.org/active-agent/logstash-codec-thrift)
 
 ## Install
 
