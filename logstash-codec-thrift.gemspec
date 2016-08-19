@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.summary         = "This example input streams a string at a definable interval."
   s.description     = "This gem is a logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/plugin install gemname. This gem is not a stand-alone program"
   s.authors         = ["Active Agent AG"]
-  s.email           = 'dev@active-agent.com'
+  s.email           = 'postmaster@active-agent.com'
   s.homepage        = "http://active-agent.com"
   s.require_paths   = ["lib"]
 
